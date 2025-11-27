@@ -31,7 +31,6 @@ int main()
 
     LEDController led(NUM_LEDS, "/dev/spidev0.0");
     AmbientProcessor ambient(NUM_LEDS);
-    PythonInterface py("/tmp/ambilight_socket");
 
     // -------------------------------------------------------
     // 2. Start Python IPC + Webserver in threads
@@ -87,8 +86,7 @@ int main()
         // -----------------------------------------
         // (B) Compute LED colors
         // -----------------------------------------
-        std::vector<RGB> ledColors =
-            ambient.processFrame(dummyFrame, WIDTH, HEIGHT);
+        std::vector<RGB> ledColors = ambient.processFrame(dummyFrame, WIDTH, HEIGHT);
 
         // -----------------------------------------
         // (C) LED → SPI output
