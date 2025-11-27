@@ -1,0 +1,15 @@
+[Unit]
+Description=Ambilight LED Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/led_daemon
+User=pi
+Group=pi
+Restart=always
+RestartSec=2
+Environment=SOCKET_PATH=/tmp/ambilight.sock
+
+[Install]
+WantedBy=multi-user.target
